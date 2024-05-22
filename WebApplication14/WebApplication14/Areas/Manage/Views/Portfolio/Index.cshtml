@@ -1,0 +1,44 @@
+﻿
+@model List<Portfolio>
+@{
+    int Count = 0;
+}
+<a class="btn btn-primary " asp-action="Create">Create</a>
+<div class="container">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Image</th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach (var item in Model)
+            {
+                Count++;
+                
+            
+    <tr>
+      <th scope="row">@Count</th>
+      <td>@item.Name</td>
+      <td>@item.Description</td>
+      <td>
+          <div style="width:100px">
+              <img width="100%" src="~/Upload/manage/@item.ImgUrl">
+          </div>
+      </td>
+      <td>
+          <a class="btn btn-secondary" asp-action="Update" asp-route-id="@item.Id"> Update </a>
+          <a class="btn btn-danger item-delete" asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
+      </td>
+      
+    </tr>
+    }
+
+    
+  </tbody>
+</table>
+
+</div>
